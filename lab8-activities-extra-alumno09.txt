@@ -1,0 +1,66 @@
+student_01_2623aa51f17e@cloudshell:~ (qwiklabs-gcp-02-3fbdd6d180bb)$ kubectl get pods
+NAME                        READY   STATUS    RESTARTS   AGE
+echo-web-6fd7bb6c7d-2jkvb   1/1     Running   0          2s
+echo-web-6fd7bb6c7d-9crl5   1/1     Running   0          6s
+echo-web-6fd7bb6c7d-sxbb5   1/1     Running   0          4s
+echo-web-7784c5f457-67cbw   0/1     Error     0          11m
+student_01_2623aa51f17e@cloudshell:~ (qwiklabs-gcp-02-3fbdd6d180bb)$ kubectl describe pod echo-web-6fd7bb6c7d-2jkvb
+Name:             echo-web-6fd7bb6c7d-2jkvb
+Namespace:        default
+Priority:         0
+Service Account:  default
+Node:             gke-echo-cluster-default-pool-708903e4-gf6m/10.128.0.4
+Start Time:       Thu, 19 Jun 2025 15:40:00 +0000
+Labels:           app=echo-web
+                  pod-template-hash=6fd7bb6c7d
+Annotations:      <none>
+Status:           Running
+IP:               10.40.0.10
+IPs:
+  IP:           10.40.0.10
+Controlled By:  ReplicaSet/echo-web-6fd7bb6c7d
+Containers:
+  echo-app:
+    Container ID:   containerd://108132ea07cbafdd5b6ad1bd98ef81d18ecf3f19bc93265ad197330d5b30a1c9
+    Image:          gcr.io/qwiklabs-gcp-02-3fbdd6d180bb/echo-app:v2
+    Image ID:       gcr.io/qwiklabs-gcp-02-3fbdd6d180bb/echo-app@sha256:8c5008dc822e647dc4e958d13f00c58371266844bded9d115cb463291ee786c6
+    Port:           <none>
+    Host Port:      <none>
+    State:          Running
+      Started:      Thu, 19 Jun 2025 15:40:01 +0000
+    Ready:          True
+    Restart Count:  0
+    Environment:    <none>
+    Mounts:
+      /var/run/secrets/kubernetes.io/serviceaccount from kube-api-access-j27hx (ro)
+Conditions:
+  Type                        Status
+  PodReadyToStartContainers   True 
+  Initialized                 True 
+  Ready                       True 
+  ContainersReady             True 
+  PodScheduled                True 
+Volumes:
+  kube-api-access-j27hx:
+    Type:                    Projected (a volume that contains injected data from multiple sources)
+    TokenExpirationSeconds:  3607
+    ConfigMapName:           kube-root-ca.crt
+    ConfigMapOptional:       <nil>
+    DownwardAPI:             true
+QoS Class:                   BestEffort
+Node-Selectors:              <none>
+Tolerations:                 node.kubernetes.io/not-ready:NoExecute op=Exists for 300s
+                             node.kubernetes.io/unreachable:NoExecute op=Exists for 300s
+Events:
+  Type    Reason     Age   From               Message
+  ----    ------     ----  ----               -------
+  Normal  Scheduled  46s   default-scheduler  Successfully assigned default/echo-web-6fd7bb6c7d-2jkvb to gke-echo-cluster-default-pool-708903e4-gf6m
+  Normal  Pulled     46s   kubelet            Container image "gcr.io/qwiklabs-gcp-02-3fbdd6d180bb/echo-app:v2" already present on machine
+  Normal  Created    46s   kubelet            Created container: echo-app
+  Normal  Started    46s   kubelet            Started container echo-app
+  Type    Reason     Age   From               Message
+  ----    ------     ----  ----               -------
+  Normal  Scheduled  46s   default-scheduler  Successfully assigned default/echo-web-6fd7bb6c7d-2jkvb to gke-echo-cluster-default-pool-708903e4-gf6m
+  Normal  Pulled     46s   kubelet            Container image "gcr.io/qwiklabs-gcp-02-3fbdd6d180bb/echo-app:v2" already present on machine
+  Normal  Created    46s   kubelet            Created container: echo-app
+  Normal  Started    46s   kubelet            Started container echo-app
